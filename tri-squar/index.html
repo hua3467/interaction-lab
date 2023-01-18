@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        main {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        #logoContainer {
+            width: 474px;
+            position: absolute;
+            top: 447px;
+            background-color: white;
+            padding: 14px 6px 1px 0;
+        }
+
+        #logo {
+            width: 100%;
+        }
+
+        #logoContainer:hover {
+            cursor: pointer;
+            background-color: #fec526;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <div class="container">
+            <div id="logoContainer">
+                <img src="./NDSU_SODAA_LOGO.png" alt="" id="logo">
+            </div>
+
+            <canvas height="800" width="800"></canvas>
+        </div>
+    </main>
+
+    <script>
+        const logoContainer = document.querySelector("#logoContainer");
+        const canvas = document.querySelector("canvas");
+        const ctx = canvas.getContext('2d');
+        const colors = ["#fec526", "#006633", "#fff"];
+        const code = {
+            0: (x, y) => {
+                drawTriangle(x, y, 40, 0, colors[0]);
+            },
+            1: (x, y) => {
+                drawTriangle(x, y, 40, 1, colors[0]);
+            },
+            2: (x, y) => {
+                drawTriangle(x, y, 40, 2, colors[0]);
+            },
+            3: (x, y) => {
+                drawTriangle(x, y, 40, 3, colors[0]);
+            },
+            4: (x, y) => {
+                drawTriangle(x, y, 40, 0, colors[1]);
+            },
+            5: (x, y) => {
+                drawTriangle(x, y, 40, 1, colors[1]);
+            },
+            6: (x, y) => {
+                drawTriangle(x, y, 40, 2, colors[1]);
+            },
+            7: (x, y) => {
+                drawTriangle(x, y, 40, 3, colors[1]);
+            },
+            8: (x, y) => {
+                drawRect(x, y, 40, colors[0]);
+            },
+            9: (x, y) => {
+                drawRect(x, y, 40, colors[1]);
+            }
+        };
+        // const pattern1 = [0,1,7,0,1,2,4,9,2,0,4,8,5,1,3,4,3,2,8,9,2,3];
+        // const pattern1 = [0,1,2,3,4,5,6,7,8,9,0,1,2,3,6];
+        // const pattern2 = [0,2,4,6,8,1,3,5,7,9,0];
+        const pattern1 = [0, 9, 1, 8, 2, 7, 3, 8, 4, 5, 1, 4, 7, 3, 8, 2, 9, 1, 5];
+        const pattern2 = [0, 9, 1, 5, 2, 7, 3, 6, 4, 5, 6, 4, 7, 3, 6, 2, 9, 1, 5];
+        // const pattern1 = [4,5,3,6,2,7,1,9,0,8,1,4,1,7,2,6,3,2,6,7,8];
+        let elementCount1 = 0;
+        let elementCount2 = 0;
+
+        // setInterval(() => {
+        //     createPattern(40);
+        // }, 10)
+
+        logoContainer.addEventListener("click", e => {
+            location.reload();
+        })
+
+        createPattern(40);
+
+        function createPattern(gridSize) {
+            ctx.clearRect(0, 0, 800, 800);
+            for (let i = 0; i < 20; i++) {
+                for (let j = 0; j < 20; j++) {
+
+                    const randNum = getRandomInt(3);
+
+
+                    if (randNum === 0 || randNum === 1) {
+                        drawTriangle(j * gridSize, i * gridSize, gridSize, getRandomInt(4), colors[getRandomInt(2)]);
+                    } else {
+                        drawRect(j * gridSize, i * gridSize, gridSize, colors[getRandomInt(2)])
+                    }
+
+                    // code[pattern1[elementCount1]](j * gridSize, i * gridSize);
+                    // if (j % 3 === 0) {
+                    //     code[pattern2[elementCount2]](j * gridSize, i * gridSize);
+                    // }
+
+
+                    elementCount1++;
+                    elementCount2++;
+                    if (elementCount1 === pattern1.length) {
+                        elementCount1 = 0;
+                    }
+                    if (elementCount2 === pattern2.length) {
+                        elementCount2 = 0;
+                    }
+
+
+
+                }
+            }
+        }
+
+
+        function drawRect(x, y, size, color) {
+            ctx.beginPath();
+            ctx.moveTo(x, y);
+            ctx.lineTo(x, y + size);
+            ctx.lineTo(x + size, y + size);
+            ctx.lineTo(x + size, y);
+            ctx.closePath();
+
+            ctx.fillStyle = color;
+            ctx.fill();
+        }
+
+        function drawTriangle(x, y, size, direction, color) {
+
+            ctx.beginPath();
+
+            if (direction === 0) {
+                ctx.moveTo(x, y + size);
+                ctx.lineTo(x, y);
+                ctx.lineTo(x + size, y);
+            } else if (direction === 1) {
+                ctx.moveTo(x, y);
+                ctx.lineTo(x + size, y);
+                ctx.lineTo(x + size, y + size);
+            } else if (direction === 2) {
+                ctx.moveTo(x + size, y);
+                ctx.lineTo(x + size, y + size);
+                ctx.lineTo(x, y + size);
+            } else if (direction === 3) {
+                ctx.moveTo(x, y);
+                ctx.lineTo(x + size, y + size);
+                ctx.lineTo(x, y + size);
+            }
+
+            ctx.closePath();
+
+            ctx.fillStyle = color;
+            ctx.fill();
+        }
+
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * max);
+        }
+    </script>
+</body>
+
+</html>
