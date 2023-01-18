@@ -6,7 +6,7 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
-body {
+main {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -32,6 +32,14 @@ body::after {
     width: 100%;
     background: linear-gradient(#2196f3,#e91e63);
     clip-path: circle(20% at 10% 10%);
+}
+.title {
+    position: fixed;
+    color: white;
+    z-index: 1000;
+    width: 100%;
+    text-align: center;
+    top: 20px;
 }
 .container {
     position: relative;

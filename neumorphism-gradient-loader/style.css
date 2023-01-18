@@ -52,6 +52,9 @@ body {
     filter: blur(20px);
     animation: animate 2s linear infinite;
 }
+.loader:hover {
+    cursor: pointer;
+}
 @keyframes animate {
     0% {
         transform: rotate(0deg);
