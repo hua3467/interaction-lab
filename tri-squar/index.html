@@ -26,7 +26,9 @@
 
         #logoContainer:hover {
             cursor: pointer;
-            background-color: #fec526;
+        }
+        canvas:hover {
+            cursor: pointer;
         }
     </style>
 </head>
@@ -34,6 +36,7 @@
 <body>
     <main>
         <div class="container">
+            <h3>Click to regenerate a new pattern</h3>
             <div id="logoContainer">
                 <img src="./NDSU_SODAA_LOGO.png" alt="" id="logo">
             </div>
@@ -43,6 +46,7 @@
     </main>
 
     <script>
+        
         const logoContainer = document.querySelector("#logoContainer");
         const canvas = document.querySelector("canvas");
         const ctx = canvas.getContext('2d');
@@ -97,6 +101,10 @@
         })
 
         createPattern(40);
+
+        canvas.addEventListener("click", e => {
+            window.open('/tri-squar', '_self');
+        })
 
         function createPattern(gridSize) {
             ctx.clearRect(0, 0, 800, 800);
