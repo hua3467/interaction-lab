@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .header {
+            background-image: url('https://images.pexels.com/photos/911738/pexels-photo-911738.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+            background-size: cover;
+            height: 500px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding-top: 50px;
+        }
+
+        .about-section {
+            width: 80%;
+            padding: 50px;
+            background-color: #f2f2f2;
+            border-radius: 10px;
+            margin-bottom: 50px;
+        }
+
+        .slideshow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slideshow img {
+            width: 500px;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: all 0.5s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header"></header>
+    <div class="container">
+        <section class="about-section">
+            <h2>About the School of Architecture</h2>
+            <p id="mission"></p>
+            <p id="diversity-statement"></p>
+            <p id="values"></p>
+            <p id="vision"></p>
+            <p id="goals"></p>
+        </section>
+        <div class="slideshow-container">
+            <div class="slides fade">
+              <img src="https://images.pexels.com/photos/911758/pexels-photo-911758.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
+            </div>
+            <div class="slides fade">
+              <img src="https://images.pexels.com/photos/38132/pexels-photo-38132.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
+            </div>
+            <div class="slides fade">
+              <img src="https://images.pexels.com/photos/380330/pexels-photo-380330.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
+            </div>
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+          </div>
+          <br>
+          <div style="text-align:center">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+          </div>
+          
+    </div>
+</body>
+<script src="script.js"></script>
+
+</html>
