@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.js"></script>
+</head>
+
+<body>
+    <main>
+    </main>
+
+    <script>
+        function setup() {
+            createCanvas(400, 400);
+        }
+
+        function draw(){
+            background(127);
+            noStroke();
+
+            for(let i = 0; i < height; i += 20) {
+                fill(129, 206, 15);
+                rect(0, i, width, 10);
+
+                fill(255);
+                rect(i, 0, 10, height);
+            }
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.6.0/lib/p5.js"></script>
+</head>
+
+<body>
+    <main>
+    </main>
+
+    <script>
+
+        let inc = 1;
+        let direction = 1;
+
+        function setup() {
+            createCanvas(800, 800);
+        }
+
+        function draw(){
+            colorMode(HSB);
+            stroke(255);
+
+            for(let i = 40; i > 2; i--) {
+                fill(i * inc, 100, 100);
+                arc(width / 2, height / 2, i * 18, i * 18, HALF_PI * i, HALF_PI * i / 2);
+            }
+
+            inc = inc + 0.02 * direction;
+            if (inc >= 18 || inc < 1) {
+                direction = -direction;
+            }
+
+
+        }
+    </script>
+
+</body>
+
+</html>
